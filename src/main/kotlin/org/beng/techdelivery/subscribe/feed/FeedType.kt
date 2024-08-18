@@ -1,4 +1,4 @@
-package org.beng.techdelivery.feed
+package org.beng.techdelivery.subscribe.feed
 
 import java.net.URI
 
