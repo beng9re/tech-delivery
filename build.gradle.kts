@@ -17,8 +17,11 @@ java {
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://repo.spring.io/milestone") }
+    maven { url = uri("https://repo.spring.io/snapshot") }
 }
 
+val kotestVersion = "5.9.1"
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -27,17 +30,12 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-integration")
     implementation("org.springframework.integration:spring-integration-feed")
 
-    //implementation(platform("io.awspring.cloud:spring-cloud-aws-dependencies:3.1.1"))
-    implementation("software.amazon.awssdk:s3:2.21.46")
-
-
-
-
+    implementation(platform("org.springframework.ai:spring-ai-bom:1.0.0-SNAPSHOT"))
+    implementation("org.springframework.ai:spring-ai-openai-spring-boot-starter")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
 }
 
 kotlin {
