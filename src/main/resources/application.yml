@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: tech-delivery
+  autoconfigure:
+    exclude:
+      - org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration
