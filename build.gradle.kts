@@ -23,6 +23,8 @@ repositories {
 }
 
 val kotestVersion = "5.9.1"
+val springmockkVersion = "4.0.2"
+val kotestExtensionsSpringVersion = "1.1.3"
 dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -36,9 +38,15 @@ dependencies {
     implementation(platform("org.springframework.ai:spring-ai-bom:1.0.0-SNAPSHOT"))
     implementation("org.springframework.ai:spring-ai-openai-spring-boot-starter")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(module = "mockito-core")
+    }
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+    testImplementation("com.ninja-squad:springmockk:$springmockkVersion")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring:$kotestExtensionsSpringVersion")
+
+    testRuntimeOnly("com.h2database:h2")
 }
 
 kotlin {
