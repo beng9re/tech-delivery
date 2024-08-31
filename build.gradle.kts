@@ -1,9 +1,10 @@
 plugins {
-    kotlin("jvm") version "1.9.24"
-    kotlin("plugin.spring") version "1.9.24"
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
-    id("org.springframework.boot") version "3.3.2"
-    id("io.spring.dependency-management") version "1.1.6"
+    kotlin("jvm")
+    kotlin("plugin.spring")
+    id("org.jetbrains.kotlin.plugin.jpa")
+    id("org.jlleitschuh.gradle.ktlint")
+    id("org.springframework.boot")
+    id("io.spring.dependency-management")
 }
 
 group = "org.beng"
@@ -23,10 +24,12 @@ repositories {
 
 val kotestVersion = "5.9.1"
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-integration")
     implementation("org.springframework.integration:spring-integration-feed")
 
